@@ -1,0 +1,27 @@
+{
+  "model_version": "1.0",
+  "scenario": "base",
+  "company": "PWR",
+  "units": "USD millions",
+  "historical_years": [
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+  ],
+  "forecast_years": [
+    2026,
+    2027,
+    2028,
+    2029,
+    2030
+  ],
+  "income_statement_source": "FIN6465_MP3_Parra_Sophia_forecast.csv",
+  "cash_plug_flag_threshold": 500,
+  "historical_quarters": "FY2020Q4-FY2026Q3",
+  "n_quarters": 24,
+  "opening_balance_sheet": "FY2025Q4 (last complete fiscal year)",
+  "source": "Financial Modeling Prep API (quarterly 10-Q/10-K statements, aggregated to fiscal years: flows summed, balances at fiscal Q4)",
+  "exported_utc": "2026-11-07T02:44:19+00:00"
+}

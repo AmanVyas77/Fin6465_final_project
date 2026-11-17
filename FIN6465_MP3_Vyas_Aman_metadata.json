@@ -1,0 +1,282 @@
+{
+  "model_version": "1.2",
+  "scenario": "base",
+  "company": "PWR",
+  "student": "Aman Vyas",
+  "units": "USD millions",
+  "information_date": "2026-10-29",
+  "historical_years": [
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+  ],
+  "forecast_years": [
+    2026,
+    2027,
+    2028,
+    2029,
+    2030
+  ],
+  "quarterly_coverage": {
+    "first": "FY2020Q4",
+    "last": "FY2026Q3",
+    "count": 24
+  },
+  "net_income_definition": "Consolidated continuing income before non-controlling-interest allocation",
+  "ebitda_definition": "Operating EBIT plus total D&A; not company adjusted EBITDA",
+  "assumptions": {
+    "revenue_growth": [
+      0.462004702258598,
+      0.15,
+      0.12,
+      0.1,
+      0.08
+    ],
+    "cogs_pct": 0.842,
+    "sga_pct": 0.07,
+    "rnd_pct": 0.0,
+    "other_opex_pct": 0.0175,
+    "da_pct_revenue": 0.0280410132689988,
+    "net_interest": 281.5,
+    "other_nonop": -30.0,
+    "tax_rate": 0.2483559802065206,
+    "tax_exclude_years": [
+      2023
+    ],
+    "tax_sensitivity_delta": 0.02
+  },
+  "tax_rate": 0.2483559802065206,
+  "field_map": {
+    "revenue": [
+      "income",
+      "revenue"
+    ],
+    "cogs": [
+      "income",
+      "costOfRevenue"
+    ],
+    "sga": [
+      "income",
+      "sellingGeneralAndAdministrativeExpenses"
+    ],
+    "rnd": [
+      "income",
+      "researchAndDevelopmentExpenses"
+    ],
+    "ebit": [
+      "income",
+      "operatingIncome"
+    ],
+    "da": [
+      "cashflow",
+      "depreciationAndAmortization"
+    ],
+    "interest_expense": [
+      "income",
+      "interestExpense"
+    ],
+    "interest_income": [
+      "income",
+      "interestIncome"
+    ],
+    "ebt": [
+      "income",
+      "incomeBeforeTax"
+    ],
+    "tax": [
+      "income",
+      "incomeTaxExpense"
+    ],
+    "net_income": [
+      "income",
+      "netIncomeFromContinuingOperations"
+    ],
+    "ppe_net": [
+      "balance",
+      "propertyPlantEquipmentNet"
+    ],
+    "intangibles_net": [
+      "balance",
+      "intangibleAssets"
+    ],
+    "deferred_revenue": [
+      "balance",
+      "deferredRevenue"
+    ]
+  },
+  "validation_thresholds": {
+    "gm_bps": 150,
+    "sga_bps": 100,
+    "revenue_growth": [
+      -0.1,
+      0.3
+    ],
+    "net_income_growth": [
+      -0.3,
+      0.4
+    ],
+    "etr": [
+      0.1,
+      0.35
+    ],
+    "annual_tie_relative": 0.005,
+    "identity_abs": 0.001
+  },
+  "checks": [
+    {
+      "check": "Quarterly coverage",
+      "result": "PASS",
+      "detail": "24 quarters (FY2020Q4 to FY2026Q3); unique=True; consecutive=True",
+      "category": "Mechanical integrity"
+    },
+    {
+      "check": "Quarter-to-annual revenue tie-out",
+      "result": "PASS",
+      "detail": "FY2025: quarters 28,351.482; FMP annual 28,351.482; gap 0.000%",
+      "category": "Mechanical integrity"
+    },
+    {
+      "check": "Gross margin drift >150 bps",
+      "result": "FAIL",
+      "detail": "FY2026: +277.1 bps",
+      "category": "Economic diagnostic"
+    },
+    {
+      "check": "SG&A share shift >100 bps",
+      "result": "FAIL",
+      "detail": "FY2022: -150.6 bps",
+      "category": "Economic diagnostic"
+    },
+    {
+      "check": "revenue growth outliers",
+      "result": "FAIL",
+      "detail": "FY2022: 31.5%; FY2026: 46.2%",
+      "category": "Economic diagnostic"
+    },
+    {
+      "check": "net_income growth outliers",
+      "result": "FAIL",
+      "detail": "FY2023: 46.7%; FY2026: 88.5%",
+      "category": "Economic diagnostic"
+    },
+    {
+      "check": "Annual ETR plausibility",
+      "result": "PASS",
+      "detail": "Bounds 10%\u201335%; positive-EBT years only; No breaches",
+      "category": "Economic diagnostic"
+    },
+    {
+      "check": "Annual index and EBIT integrity",
+      "result": "PASS",
+      "detail": "Unique consecutive increasing fiscal years; EBIT <= revenue",
+      "category": "Mechanical integrity"
+    },
+    {
+      "check": "Finite values and core signs",
+      "result": "PASS",
+      "detail": "Core expenses nonnegative; signed other OpEx/non-Op and historical tax benefits permitted",
+      "category": "Mechanical integrity"
+    },
+    {
+      "check": "Statement identities, all years",
+      "result": "PASS",
+      "detail": "Maximum absolute residual 0.00000000m",
+      "category": "Mechanical integrity"
+    },
+    {
+      "check": "D&A cash-flow / income cross-check",
+      "result": "PASS",
+      "detail": "All 24 quarters; cash-flow D&A matches income endpoint D&A",
+      "category": "Mechanical integrity"
+    },
+    {
+      "check": "Deferred-revenue bridge identity",
+      "result": "PASS",
+      "detail": "Implied billings-equivalent, not independently disclosed billings",
+      "category": "Mechanical integrity"
+    },
+    {
+      "check": "First-year revenue guidance and reported YTD",
+      "result": "PASS",
+      "detail": "FY2026 41,450.0m; implied Q4 12,003.3m",
+      "category": "Mechanical integrity"
+    },
+    {
+      "check": "Tax sensitivity arithmetic",
+      "result": "PASS",
+      "detail": "Each +/-2 point rate move changes NI by -/+2% of positive EBT",
+      "category": "Mechanical integrity"
+    }
+  ],
+  "validation_overview": [
+    {
+      "category": "Economic diagnostic",
+      "PASS": 1,
+      "FAIL": 4
+    },
+    {
+      "category": "Mechanical integrity",
+      "PASS": 9,
+      "FAIL": 0
+    }
+  ],
+  "source": "Financial Modeling Prep API; quarterly statements aggregated to complete fiscal years",
+  "source_log": [
+    {
+      "endpoint": "income-statement",
+      "symbol": "PWR",
+      "period": "quarter",
+      "limit": 24,
+      "retrieved_utc": "2026-10-30T21:49:00+00:00",
+      "raw_file": "fmp_cache_mp3/PWR_income-statement_quarter_24.json",
+      "sha256": "6f5a603e086b61502077e10ba9bf6bc41f1df3db18003f730ce03584e6f035af",
+      "record_count": 24
+    },
+    {
+      "endpoint": "balance-sheet-statement",
+      "symbol": "PWR",
+      "period": "quarter",
+      "limit": 24,
+      "retrieved_utc": "2026-10-30T21:49:01+00:00",
+      "raw_file": "fmp_cache_mp3/PWR_balance-sheet-statement_quarter_24.json",
+      "sha256": "3a5b16e5936d3684710613f2f15d7b14e15d6d4ed770a0443b84a75f2efe9e05",
+      "record_count": 24
+    },
+    {
+      "endpoint": "cash-flow-statement",
+      "symbol": "PWR",
+      "period": "quarter",
+      "limit": 24,
+      "retrieved_utc": "2026-10-30T21:49:01+00:00",
+      "raw_file": "fmp_cache_mp3/PWR_cash-flow-statement_quarter_24.json",
+      "sha256": "2cf6508993c78ad88ab93ef357b0f8030c17293e1696b60e4b0eb46fd104bda6",
+      "record_count": 24
+    },
+    {
+      "endpoint": "income-statement",
+      "symbol": "PWR",
+      "period": "annual",
+      "limit": 5,
+      "retrieved_utc": "2026-10-30T21:49:02+00:00",
+      "raw_file": "fmp_cache_mp3/PWR_income-statement_annual_5.json",
+      "sha256": "d7fd5b1ce02547a35fdf91c4381e864373e00a2ab81ff7ebfe48dcd71aa7c882",
+      "record_count": 5
+    }
+  ],
+  "disclosure_urls": [
+    "https://investors.quantaservices.com/sec-filings/all-sec-filings/content/0001050915-26-000006/pwr-20251231.htm",
+    "https://investors.quantaservices.com/news-events/press-releases/detail/407/quanta-services-reports-third-quarter-2026-results",
+    "https://investors.quantaservices.com/_assets/_fc5bb11e4a851e00d4a3eb0311aa0c81/quantaservices/db/917/10556/outlook_expectations_summary/PWR_09-30-2026_Outlook_Expectations_Summary.pdf",
+    "https://investors.quantaservices.com/_assets/_fc5bb11e4a851e00d4a3eb0311aa0c81/quantaservices/db/917/10556/operational_and_financial_commentary/PWR_09-30-2026_ER_Operational_and_Financial_Summary.pdf",
+    "https://investors.quantaservices.com/_assets/_33a741543a242bab3497a25a8c07419a/quantaservices/db/894/10451/pdf/Quanta+Services+2026+Investor+Day+Presentation+vF+for+Website.pdf",
+    "https://investors.quantaservices.com/sec-filings/all-sec-filings/content/0001050915-22-000008/pwr-20211231.htm"
+  ],
+  "historical_source_policy": "Use FMP as instructed; SEC agreement is not a validation requirement",
+  "limitations": [
+    "Implied billings-equivalent bridge, not independently reported gross billings",
+    "Fixed net financing expense; no explicit debt or PP&E forecast"
+  ],
+  "exported_utc": "2026-10-30T21:49:02+00:00"
+}

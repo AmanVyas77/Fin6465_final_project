@@ -1,0 +1,70 @@
+{
+  "scenario": "base",
+  "units": "USD millions",
+  "tolerance_atol": 1e-06,
+  "beginning_cash": 439.508,
+  "beginning_cash_definition": "Cash and short-term investments, FY2025 fiscal Q4 balance sheet",
+  "opening_balance_year": 2025,
+  "forecast_years": [
+    2026,
+    2027,
+    2028,
+    2029,
+    2030
+  ],
+  "drivers": {
+    "dso": 105.0,
+    "dio": 4.5,
+    "dpo": 38.5,
+    "deferred_pct_revenue": 0.1,
+    "capex_pct_revenue": 0.03,
+    "payout_ratio": 0.06,
+    "interest_rate": 0.048,
+    "borrowings": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "repayments": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "equity_issued": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "equity_repurchased": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "sign_convention": "inflows +, outflows -; CapEx, repayments, repurchases, dividends stored positive",
+  "interest_dividend_classification": "interest paid in CFO (inside net income); dividends in CFF",
+  "max_abs_errors": {
+    "cf_identity_error": 0.0,
+    "cash_roll_error": 0.0,
+    "cash_bs_tie_error": 0.0,
+    "balance_error": 7.275957614183426e-12
+  },
+  "model_version": "1.0",
+  "company": "PWR",
+  "income_statement_source": "FIN6465_MP3_D'Antonio_Caleb_forecast.csv",
+  "opening_balance_source": "FIN6465_MP4_D'Antonio_Caleb_balance_sheet_full.csv",
+  "historical_cash_flow_source": "Financial Modeling Prep API (quarterly 10-Q/10-K cash flow statements, aggregated to fiscal years)",
+  "historical_quarters": "FY2020Q3-FY2026Q2",
+  "n_quarters": 24,
+  "data_checks_passed": true,
+  "any_flag": false,
+  "exported_utc": "2026-11-13T04:07:14+00:00"
+}

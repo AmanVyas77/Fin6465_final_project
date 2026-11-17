@@ -1,0 +1,7 @@
+fiscal_year,cf_identity_error,cash_roll_error,cash_bs_tie_error,balance_error,Flag_CashMismatch,Flag_CashRollError,Flag_BSNotClosing
+FY2026E,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+FY2027E,0.0,0.0,0.0,-3.637978807091713e-12,0.0,0.0,0.0
+FY2028E,0.0,0.0,0.0,5.4569682106375694e-12,0.0,0.0,0.0
+FY2029E,0.0,0.0,0.0,-3.637978807091713e-12,0.0,0.0,0.0
+FY2030E,0.0,0.0,0.0,7.275957614183426e-12,0.0,0.0,0.0
+max_abs_error,0.0,0.0,0.0,7.275957614183426e-12,,,

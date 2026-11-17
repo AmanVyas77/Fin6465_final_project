@@ -1,0 +1,13 @@
+## Chapter 5 Mini-Project Summary: Quanta Services (PWR)
+
+**Model structure.** The model integrates the Week 3 income statement (FY2026-FY2030) with the Week 4 schedules, starting from the FY2025 fiscal Q4 balance sheet, in USD millions. Historical cash flows come from 24 quarters of FMP statements (FY2020Q3-FY2026Q2), aggregated to FY2021-FY2025; both data checks pass. One call to `run_three_statement_model()` runs the builders in order: income statement, schedules (working capital, PP&E, equity, debt), balance sheet ex-cash, CFO/CFI/CFF, cash roll-forward, full balance sheet, and integrity checks. Cash is rolled forward from 439.5 and inserted into the balance sheet, never solved as a plug. Inflows are positive and outflows negative; CapEx, repayments, repurchases, and dividends are stored as positive magnitudes and signed at assembly. Interest stays in CFO and dividends in CFF. With `fail_fast=True`, any flag above ATOL (1e-6) raises an error; the maximum balance error is 7.3e-12, and rolled cash matches the Week 4 plug exactly.
+
+**Driver assumptions.** Unchanged from Week 4: DSO 105, DIO 4.5, DPO 38.5, contract liabilities 10% of revenue, CapEx 3.0% of revenue, payout 6% of net income, interest 4.8%, and debt flat at 6,419 with no issuance, repurchases, or repayments.
+
+**Cash flow decomposition.** Over FY2026-FY2030, CFO totals 16,424, CFI -7,817 (CapEx only), and CFF -738 (dividends only), so cash builds from 439.5 to 8,308.6.
+
+**Net income versus CFO.** In FY2026, CFO (1,478.2) is below net income (1,810.1) because a 1,595.7 working-capital build, mostly receivables, outweighs the 1,263.8 D&A add-back. From FY2027, CFO exceeds net income by 35-48% as D&A outweighs smaller working-capital builds.
+
+**FCFF and FCFE proxy.** FCFF = EBIT(1 - tax rate) + D&A - gross CapEx - change in NWC, with the tax rate from Week 3 (about 23.5%). The FCFE proxy adds net borrowing before dividends; with flat debt it equals FCFF. FCFF rises from 507.7 to 2,828.9 and totals 9,677.7, versus 737.3 of dividends, implying substantial capacity for acquisitions, repurchases, or debt repayment. FCFF exceeds CFO + CFI by after-tax net interest (214.3 per year).
+
+**Principal risks.** The model has no acquisitions or buybacks, though Quanta spent about 3.3 billion on acquisitions and investments and 134.6 on repurchases in FY2025, so the 8.3 billion cash build overstates likely cash. D&A includes acquisition amortization but runs through PP&E, so net PP&E shrinks. Net income is fixed from Week 3, so interest does not respond to scenario debt changes. Cash is very sensitive to collections: DSO +10 days cuts year-5 cash by 1,746.1 and turns FY2026 cash negative (-457.7).
